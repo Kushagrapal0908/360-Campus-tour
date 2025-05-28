@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIET VR Tour</title>
+  <link rel="stylesheet" href="homestyle.css" />
+  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="chatbot.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="img/noida_institute_of_engineering__technology_logo.jpeg" alt="NIET Logo" />
+    </div>
+    <nav>
+      <a href="#" id="home-link">Home</a>
+      <a href="VR tour/Ground.html" id="vrtour-link">VR Tour</a>
+    </nav>
+  </header>
+
+  <main class="flex flex-col items-center justify-center pt-16 pb-10 px-4">
+    <section class="intro-hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>MEET THE <span>NEW REALITY</span></h1>
+        <p class="sub-tagline">Step into NIET’s virtual world — where innovation meets experience.</p>
+        </div>
+         <!-- Scroll Arrows -->
+      <div class="relative w-full max-w-6xl">
+        <button onclick="scrollMenu(-300)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-200">
+          <i class="fas fa-chevron-left text-gray-700"></i>
+        </button>
+
+      <!-- Scrollable Menu -->
+      <div id="scroll-menu" class="flex overflow-x-auto gap-6 px-10 py-6 scroll-smooth scrollbar-hide">
+        <!-- Sample Cards -->
+        <div onclick="location.href='VR tour/college_entrance.html'" class="card">
+          <img src="img/entrance.jpeg" alt="About Us">
+          <h2>LIBRARY</h2>
+        </div>
+
+        <!-- Duplicate this card as needed -->
+        <!-- (reused the Contact card from your example for brevity) -->
+         <div onclick="location.href='VR tour/Library.html'" class="card">
+          <img src="img/library.jpeg" alt="About Us">
+          <h2>LIBRARY</h2>
+        </div>
+
+        <div onclick="location.href='VR tour/D_block_lab.html'" class="card">
+          <img src="img/lab.jpeg" alt="About Us">
+          <h2>COMPUTER LAB</h2>
+          
+        </div>
+        <div onclick="location.href='VR tour/D_block_class.html'" class="card">
+          <img src="img/class.jpeg" alt="About Us">
+          <h2>CLASS</h2>
+          
+        </div>
+        <div onclick="location.href='VR tour/canteen.html'" class="card">
+          <img src="img/canteen.jpeg" alt="About Us">
+          <h2>CANTEEN</h2>
+          
+        </div>
+      
+       
+        <!-- Add more cards here -->
+      </div>
+
+      <button onclick="scrollMenu(300)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-200">
+        <i class="fas fa-chevron-right text-gray-700"></i>
+      </button>
+      </div>
+    </section>
+       
+  
+    
+  
+
+    <section class="content"> 
+    </section>
+    <section class="quote-section">
+      <div class="quote-text">
+        <h2>NIET bridges imagination and innovation</h2>
+        <p>Where every virtual step brings you closer to the heart of knowledge, culture, and future possibilities.</p>
+      </div>
+      <div class="quote-image">
+        <img src="img/pillar-global-1200 (1).avif" alt="NIET Global Pillars" />
+      </div>
+    </section>
+
+   
+
+  </main>
+
+  <!-- 💬 AI Assistant Chatbot -->
+  <div class="chatbot-icon" onclick="toggleChatbot()">💬</div>
+
+  <div class="chatbot-popup" id="chatbot-box">
+    <div class="chat-header">
+      <svg class="chatbot-logo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 1024 1024">
+        <path d="..."></path>
+      </svg>
+      <div class="header-info">
+        <h2 class="logo-text">AI ASSISTANT</h2>
+      </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        <i class="fas fa-arrow-down"></i>
+      </button>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <svg class="bot-avatar" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+        <path d="..."></path>
+      </svg>
+      <div class="message bot-message">Hey there! How can I help you today?</div>
+    </div>
+
+    <div class="chat-footer">
+      <form id="chatForm" class="chat-form">
+        <textarea placeholder="Message..." class="message-input" required></textarea>
+        <div class="chat-controls">
+          <button type="button" class="material-symbols-rounded">😊</button>
+          <button type="button" class="material-symbols-rounded">📎</button>
+          <button type="submit" id="send-message" class="material-symbols-rounded">⬆️</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Academic</h3>
+        <ul>
+          <li><a href="#">Syllabus</a></li>
+          <li><a href="#">Academic Calendar</a></li>
+          <li><a href="#">Guidelines & Policies</a></li>
+          <li><a href="#">Departments</a></li>
+          <li><a href="#">Faculty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Link</h3>
+        <ul>
+          <li><a href="#">NIET ERP</a></li>
+          <li><a href="#">NIET Examination Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Stay Connected</h3>
+        <ul>
+          <li><a href="#">Subscribe with us</a></li>
+          <li><a href="#">Enter Email Address</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleChatbot() {
+      const chatbotBox = document.getElementById("chatbot-box");
+      chatbotBox.style.display = chatbotBox.style.display === "block" ? "none" : "block";
+    }
+
+    document.getElementById("close-chatbot").addEventListener("click", function () {
+      document.getElementById("chatbot-box").style.display = "none";
+    });
+
+    document.getElementById("chatForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = this.querySelector(".message-input");
+      const message = input.value.trim();
+      if (message) {
+        const chatBody = document.getElementById("chatBody");
+        const userMessage = document.createElement("div");
+        userMessage.className = "message user-message";
+        userMessage.innerText = message;
+        chatBody.appendChild(userMessage);
+        input.value = "";
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        const botResponse = document.createElement("div");
+        botResponse.className = "message bot-message";
+        botResponse.innerText = "Thanks for your message! (This is a demo response)";
+        setTimeout(() => {
+          chatBody.appendChild(botResponse);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 500);
+      }
+    });
+    function scrollMenu(amount) {
+      const container = document.getElementById('scroll-menu');
+      container.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  </script>
+  <script src="homescript.js"></script>
+  <script src="homeindex.js"></script>
+</body>
+</html>
