@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>canteen</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    #viewer {
+      width: 100vw;
+      height: 100vh;
+    }
+
+  </style>
+</head>
+<body onload="keyListener()">
+  
+  <div id="viewer"></div>
+  <div id="navMenu" class="nav-menu">
+  <button id="toggleMenuBtn">☰ Menu</button>
+  <div id="menuContent" class="menu-content">
+    <a href="3d_printing.html">3D Printing Lab</a>
+    <a href="B_block_class.html">B Block Class</a>
+    <a href="B_Block_lab.html">B Block Lab</a>
+    <a href="biotech_lab.html">BIOTECH Lab</a>
+    <a href="canteen.html">Canteen</a>
+    <a href="Library.html">Library</a>
+    <a href="chemistry_lab.html">Chemistry Lab</a>
+    <a href="college_entrance.html">College Entrance</a>
+    <a href="D_block_class.html">D Block Class</a>
+    <a href="D_block_lab.html">D Block Lab</a>
+    <a href="Ground.html">Ground</a>
+    <a href="idea_lab.html">Idea Lab</a>
+    <a href="pharamcutics.html">Pharamcutics</a>
+    <a href="ptc_lab.html">PTA Lab</a>
+    <a href="reception.html">Reception</a>
+    <a href="workshop.html">Workshop</a>
+    <a href="Metaverse_lab.html">Metaverse Lab</a>
+    <a href="parking.html">Parking</a>
+  </div>
+</div>
+
+
+  <script type="module">
+    import * as THREE from 'https://cdn.skypack.dev/three@0.133.0/build/three.module.js';
+    import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.0/examples/jsm/controls/OrbitControls.js';
+
+    const scene = new THREE.Scene();
+
+    // Position camera INSIDE the box
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(0, 0, 0.1); // small Z offset to avoid sitting exactly at center
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('viewer').appendChild(renderer.domElement);
+
+    const loader = new THREE.TextureLoader();
+
+    // Skybox materials: only 4 sides needed (front, back, left, right)
+    const materials = [
+      new THREE.MeshBasicMaterial({ map: loader.load('img/canteen/left.jpeg'), side: THREE.BackSide }), // px
+      new THREE.MeshBasicMaterial({ map: loader.load('img/canteen/right.jpeg'),  side: THREE.BackSide }), // nx
+      new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.BackSide }),              // py (top)
+      new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.BackSide }),              // ny (bottom)
+      new THREE.MeshBasicMaterial({ map: loader.load('img/canteen/back.jpeg'), side: THREE.BackSide }), // pz
+      new THREE.MeshBasicMaterial({ map: loader.load('img/canteen/front.jpeg'),  side: THREE.BackSide })  // nz
+    ];
+
+    const skybox = new THREE.Mesh(
+      new THREE.BoxGeometry(5000, 5000, 5000),
+      materials
+    );
+    scene.add(skybox);
+
+    // Orbit Controls setup
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enablePan = false;
+    controls.enableZoom = true;
+
+    // LOCK the vertical movement — only allow horizontal rotation
+    controls.minPolarAngle = Math.PI / 2;
+    controls.maxPolarAngle = Math.PI / 2;
+
+    // Smooth rotation
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.1;
+    controls.rotateSpeed = 0.3;
+    controls.zoomSpeed = 0.5;
+
+    // Keyboard rotation and zoom
+    window.addEventListener('keydown', (e) => {
+      const turn = 0.05;
+      if (e.key === 'ArrowLeft') {
+        controls.rotateLeft(turn);
+      }
+      if (e.key === 'ArrowRight') {
+        controls.rotateLeft(-turn);
+      }
+      if (e.key === '+') {
+        camera.zoom *= 1.1;
+        camera.updateProjectionMatrix();
+      }
+      if (e.key === '-') {
+        camera.zoom /= 1.1;
+        camera.updateProjectionMatrix();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update(); // for smooth damping
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+<script src="vr.js"></script>
+</html>
